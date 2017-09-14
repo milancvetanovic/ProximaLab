@@ -12,5 +12,14 @@
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('home');
 });
+
+Route::get('login', 'LoginController@showLoginForm');
+Route::post('login', 'LoginController@login');
+Route::get('logout', 'LoginController@logout');
+
+Route::get('/register', 'RegistrationController@showRegisterForm');
+Route::post('/register', 'RegistrationController@store');
+
+Route::get('/verifications', 'VerificationsController@showVerifications');
