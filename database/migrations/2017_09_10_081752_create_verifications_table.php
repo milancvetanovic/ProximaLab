@@ -15,7 +15,7 @@ class CreateVerificationsTable extends Migration
     {
         Schema::create('verifications', function (Blueprint $table) {
             $table->increments('id');
-            $table->date('dateOfVerification');
+            $table->timestamp('dateOfVerification');
             $table->boolean('status');
             $table->string('testReport');
             $table->integer('user_id');

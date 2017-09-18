@@ -19,10 +19,10 @@
                     @foreach($verifications as $verification)
                         <tr>
                             <th>#</th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
-                            <th></th>
+                            <th>{{ $verification->verified_device->generic_name }}</th>
+                            <th>{{ $verification->verified_device->manufacturer }}</th>
+                            <th>{{ $verification->verified_device->model }}</th>
+                            <th>{{ $verification->verified_device->serial }}</th>
                             <th>{{$verification->dateOfVerification}}</th>
                             <th>{{$verification->user->name}}</th>
                             <th>{{$verification->testReport}}</th>

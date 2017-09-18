@@ -35,6 +35,7 @@ class LoginController extends Controller
 
     public function logout() {
         auth()->logout();
+
         session()->flash('message', 'You are logged out. Now what?');
 
         return redirect('/login');

@@ -6,22 +6,7 @@
 
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="/bootstrap-4.0.0-beta-dist/css/bootstrap.min.css">
-
-    <style>
-        #registerHeader {
-            font-size: 1.777em;
-            line-height: 1.2em;
-            margin-top: 1.6em;
-            margin-bottom: 30px;
-            font-weight: bold;
-            word-wrap: break-word;
-            color: #4d4d4d;
-            text-align: left;
-        }
-        .container {
-            margin-top: 70px;
-        }
-    </style>
+    <link rel="stylesheet" href="/css/app.css">
 
 </head>
 <body>
@@ -43,14 +28,14 @@
                 <div class="form-group">
                     <label for="name" class="col-md-8">Name</label>
                     <div class="col-md-6">
-                        <input type="text" class="form-control" name="name">
+                        <input type="text" class="form-control" name="name" placeholder="e.g., {{Faker\Factory::create()->name}}">
                     </div>
                 </div>
 
                 <div class="form-group">
                     <label for="email" class="col-md-8">Email</label>
                     <div class="col-md-6">
-                        <input type="email" class="form-control" name="email">
+                        <input type="email" class="form-control" name="email" placeholder="e.g., {{Faker\Factory::create()->email}}">
                     </div>
                 </div>
 
@@ -89,3 +74,4 @@
 
 </body>
 </html>
+

@@ -18,36 +18,27 @@ class RegistrationController extends Controller
 
     public function store(){
 
-        //dd(request()->all());
         $this->validate(request(),[
            'name' => 'required',
            'email' => 'required|email',
            'password' => 'required'
         ]);
 
-        $operator = request('operator');
-
-        if ($operator){
-            $user = User::create([
-                'name' => request('name'),
-                'email' =>request('email'),
-                'password' => bcrypt(request('password')),
-                'operator' => request('operator')
-            ]);
-
-            auth()->login($user);
-
-            return redirect('/');
+        if (request()->has('operator')){
+            $operator = request('operator');
+        } else {
+            $operator = 0;
         }
 
-        $user = User::create([
+        User::create([
             'name' => request('name'),
             'email' =>request('email'),
             'password' => bcrypt(request('password')),
+            'operator' => $operator,
         ]);
 
-        auth()->login($user);
+        session()->flash('message', 'You have successfully added a new user!');
 
-        return redirect('/');
+        return redirect('/register');
     }
 }

@@ -12,6 +12,7 @@
     <!-- Bootstrap core CSS -->
     <link rel="stylesheet" href="/bootstrap-4.0.0-beta-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/jumbotron.css">
+    <link rel="stylesheet" href="/css/app.css">
 
 </head>
 
