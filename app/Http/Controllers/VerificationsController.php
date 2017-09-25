@@ -9,7 +9,14 @@ class VerificationsController extends Controller
 
     public function __construct()
     {
-        $this->middleware('auth');
+        $this->middleware('auth')->only('showVerifications');
+        $this->middleware('operator')->only('index');
+    }
+
+    public function index(){
+        $verifications = Verification::latest()->get();
+
+        return view('operator.verifications.index', compact('verifications'));
     }
 
     public function showVerifications(){

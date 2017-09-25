@@ -15,6 +15,9 @@ Route::get('/', function () {
     return view('home');
 });
 
+/*------------------------------------------------------
+| Login function routes.
+------------------------------------------------------- */
 Route::get('login', 'LoginController@showLoginForm');
 Route::post('login', 'LoginController@login');
 Route::get('logout', 'LoginController@logout');
@@ -23,3 +26,14 @@ Route::get('/register', 'RegistrationController@showRegisterForm');
 Route::post('/register', 'RegistrationController@store');
 
 Route::get('/verifications', 'VerificationsController@showVerifications');
+
+Route::get('/operator/verifications', 'VerificationsController@index');
+
+Route::get('operator/clients', 'ClientsController@index');
+
+Route::get('operator/operators', 'OperatorsController@index');
+
+Route::get('operator/measuring_devices', 'MeasuringDevicesController@index');
+Route::post('operator/measuring_devices', 'MeasuringDevicesController@store');
+Route::patch('operator/measuring_devices/{measuring_device}', 'MeasuringDevicesController@update');
+Route::get('operator/measuring_devices/{measuring_device}', 'MeasuringDevicesController@edit');

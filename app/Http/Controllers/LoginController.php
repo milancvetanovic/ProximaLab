@@ -29,6 +29,10 @@ class LoginController extends Controller
 
         session()->flash('message', 'Welcome back!');
 
+        if (auth()->user()->operator){
+            return redirect('/operator/verifications');
+        }
+
         return redirect('/');
 
     }

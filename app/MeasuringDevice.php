@@ -7,7 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class MeasuringDevice extends Model
 {
     protected $fillable = [
-        'manufacturer', 'model', 'serialNumber'
+        'manufacturer', 'model', 'serial'
     ];
 
     public function verifications(){
