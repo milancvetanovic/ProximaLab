@@ -33,7 +33,7 @@ class LoginController extends Controller
             return redirect('/operator/verifications');
         }
 
-        return redirect('/');
+        return redirect('/verifications');
 
     }
 

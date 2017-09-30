@@ -20,6 +20,7 @@ class VerificationsController extends Controller
     }
 
     public function showVerifications(){
+        
         $verifiedDevices = auth()->user()->verified_devices;
 
         foreach ($verifiedDevices as $verifiedDevice){
