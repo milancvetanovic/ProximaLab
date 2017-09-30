@@ -24,10 +24,10 @@
                 <?php $i = 1; ?>
                 @foreach($measuringDevices as $device)
                     <tr>
-                        <th><a href="/operator/measuring_devices/{{$device->id}}">{{ $i }}</a></th>
-                        <th><a href="/operator/measuring_devices/{{$device->id}}">{{ $device->manufacturer }}</a></th>
-                        <th><a href="/operator/measuring_devices/{{$device->id}}">{{ $device->model }}</a></th>
-                        <th><a href="/operator/measuring_devices/{{$device->id}}">{{ $device->serial }}</a></th>
+                        <td><a href="/operator/measuring_devices/{{$device->id}}">{{ $i }}</a></td>
+                        <td><a href="/operator/measuring_devices/{{$device->id}}">{{ $device->manufacturer }}</a></td>
+                        <td><a href="/operator/measuring_devices/{{$device->id}}">{{ $device->model }}</a></td>
+                        <td><a href="/operator/measuring_devices/{{$device->id}}">{{ $device->serial }}</a></td>
                     </tr>
                     <?php $i = $i + 1; ?>
                 @endforeach

@@ -40,6 +40,18 @@ class MeasuringDevicesController extends Controller
         return view('operator.measuringDevices.edit', compact('measuring_device'));
     }
 
+    public function show(MeasuringDevice $measuring_device) {
+
+        return view('operator.measuringDevices.show', compact('measuring_device'));
+    }
+
+    public function destroy(MeasuringDevice $measuring_device) {
+
+        $measuring_device->delete();
+
+        return redirect('operator/measuring_devices');
+    }
+
     public function update(MeasuringDevice $measuring_device) {
         $this->validate(request(),[
             'manufacturer' => 'required',
@@ -55,6 +67,6 @@ class MeasuringDevicesController extends Controller
 
         session()->flash('message', 'You have successfully updated measuring device.');
 
-        return redirect('operator/measuring_devices');
+        return redirect('operator/measuring_devices/'.$measuring_device->id);
     }
 }

@@ -22,10 +22,10 @@
                 <?php $i = 1; ?>
                 @foreach($clients as $client)
                     <tr>
-                        <th>{{ $i }}</th>
-                        <th>{{ $client->name }}</th>
-                        <th>{{ $client->email }}</th>
-                        <th>{{ $client->address}}</th>
+                        <td><a href="/operator/clients/{{ $client->id }}">{{ $i }}</a></td>
+                        <td><a href="/operator/clients/{{ $client->id }}">{{ $client->name }}</a></td>
+                        <td><a href="/operator/clients/{{ $client->id }}">{{ $client->email }}</a></td>
+                        <td><a href="/operator/clients/{{ $client->id }}">{{ $client->address}}</a></td>
                     </tr>
                     <?php $i = $i + 1; ?>
                 @endforeach
@@ -33,10 +33,11 @@
             </table>
         </div>
         <div class="pt-3">
-            <button type="button" class="btn btn-success" id="add-button" data-toggle="modal" data-target="#addClientModal">
+            <form action="/operator/clients/create" method="get">
+            <button type="submit" class="btn btn-success" id="edit-button">
                 Add New Client
             </button>
+            </form>
         </div>
     </main>
-    @include('operator.modals.addClient')
 @endsection

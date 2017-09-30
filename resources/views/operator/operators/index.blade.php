@@ -22,10 +22,10 @@
                 <?php $i = 1; ?>
                 @foreach($operators as $operator)
                     <tr>
-                        <th>{{ $i }}</th>
-                        <th>{{ $operator->name }}</th>
-                        <th>{{ $operator->email }}</th>
-                        <th>{{ $operator->verifications->count() }}</th>
+                        <td><a href="/operator/operators/{{ $operator->id }}">{{ $i }}</a></td>
+                        <td><a href="/operator/operators/{{ $operator->id }}">{{ $operator->name }}</a></td>
+                        <td><a href="/operator/operators/{{ $operator->id }}">{{ $operator->email }}</a></td>
+                        <td><a href="/operator/operators/{{ $operator->id }}">{{ $operator->verifications->count() }}</a></td>
                     </tr>
                     <?php $i = $i + 1; ?>
                 @endforeach
