@@ -20,6 +20,7 @@ class VerificationsController extends Controller
     }
 
     public function showVerifications(){
+
         $verifications = Verification::latest()->Where('user_id', auth()->user()->id)->get();
 
         return view('verifications.showVerifications', compact('verifications'));

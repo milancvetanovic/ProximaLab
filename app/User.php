@@ -32,6 +32,6 @@ class User extends Authenticatable
     }
 
     public function verified_devices(){
-        return $this->hasMany(MeasuringDevice::class);
+        return $this->hasMany(VerifiedDevice::class);
     }
 }
