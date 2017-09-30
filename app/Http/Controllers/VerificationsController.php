@@ -20,7 +20,12 @@ class VerificationsController extends Controller
     }
 
     public function showVerifications(){
-        $verifications = Verification::latest()->Where('user_id', auth()->user()->id)->get();
+        $verifiedDevices = auth()->user()->verified_devices;
+
+        foreach ($verifiedDevices as $verifiedDevice){
+            $verifications[] = $verifiedDevice->verifications;
+        }
+        $verifications = array_collapse($verifications);
 
         return view('verifications.showVerifications', compact('verifications'));
     }
