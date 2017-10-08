@@ -19,12 +19,14 @@
             <li class="nav-item">
                 <a class="nav-link" href="/contact">Contact Us</a>
             </li>
-
         </ul>
+
         <form class="form-inline my-2 my-lg-0 pr-5">
             <input class="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search">
             <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
         </form>
+
+        @if(auth()->check())
         <div class="nav-item dropdown">
             <a class="nav-link dropdown-toggle" href="http://example.com" id="dropdown01" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                 {{ auth()->user()->name }}
@@ -36,6 +38,12 @@
                 <div class="dropdown-divider"></div>
                 <a href="/logout" class="dropdown-item">Logout</a>
             </div>
+            @else
+                <div class="nav-item">
+                        <a class="nav-link" href="/login">Login</a>
+                </div>
+        @endif
+
         </div>
     </div>
 </nav>

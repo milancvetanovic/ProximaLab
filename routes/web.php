@@ -28,6 +28,8 @@ Route::post('/register', 'RegistrationController@store');
 Route::get('/verifications', 'VerificationsController@showVerifications');
 
 Route::get('/operator/verifications', 'VerificationsController@index');
+Route::get('operator/verifications/create', 'VerificationsController@create');
+Route::post('operator/verifications', 'VerificationsController@store');
 
 /*--------------------------------------------------------
  | Clients routes

@@ -1,5 +1,7 @@
 @extends('operator.layouts.master')
 
+<?php ?>
+
 @section('content')
 
     <main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
@@ -9,7 +11,7 @@
 
         <h2>Verifications</h2>
         <div class="table-responsive">
-            <table class="table table-striped">
+            <table class="table">
                 <thead>
                 <tr>
                     <th>#</th>
@@ -25,7 +27,9 @@
                 <tbody>
                 <?php $i = 1; ?>
                 @foreach($verifications as $verification)
-                    <tr>
+                    <tr class="@if($verification->status)
+                            table-success @else table-danger
+                        @endif">
                         <td>{{ $i }}</td>
                         <td>{{ $verification->verified_device->generic_name }}</td>
                         <td>{{ $verification->verified_device->manufacturer }}</td>
@@ -33,17 +37,21 @@
                         <td>{{ $verification->verified_device->serial }}</td>
                         <td>{{$verification->dateOfVerification}}</td>
                         <td>{{$verification->user->name}}</td>
-                        <td>{{$verification->testReport}}</td>
+                        <td class="text-center"><a href="{{ Storage::disk('public')->url($verification->testReport) }}" target="_blank" rel="noopener" style="color: #212529">
+                                <span class="oi oi-file" title="file" aria-hidden="true"></span>
+                            </a></td>
                     </tr>
                     <?php $i = $i + 1; ?>
                 @endforeach
                 </tbody>
             </table>
         </div>
-        <div>
-            <button type="button" class="btn btn-success" id="add-button" data-toggle="modal" data-target="#addVerificationModal">
-                Add New Verification
-            </button>
+        <div class="pt-3">
+            <form action="/operator/verifications/create" method="get">
+                <button type="submit" class="btn btn-success" id="edit-button">
+                    Add New Verification
+                </button>
+            </form>
         </div>
     </main>
     @include('operator.modals.addVerification')

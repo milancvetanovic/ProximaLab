@@ -1,7 +1,7 @@
 <?php
 /**
  * A helper file for Laravel 5, to provide autocomplete information to your IDE
- * Generated for Laravel 5.5.13 on 2017-09-27.
+ * Generated for Laravel 5.5.14 on 2017-10-05.
  *
  * @author Barry vd. Heuvel <barryvdh@gmail.com>
  * @see https://github.com/barryvdh/laravel-ide-helper
@@ -6747,7 +6747,7 @@ namespace Illuminate\Support\Facades {
         }
         
         /**
-         * Get the current encoded path info for the request.
+         * Get the current decoded path info for the request.
          *
          * @return string 
          * @static 

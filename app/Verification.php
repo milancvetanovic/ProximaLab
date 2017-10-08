@@ -7,7 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class Verification extends Model
 {
     protected $fillable = [
-        'dateOfVerification', 'status', 'testReport'
+        'dateOfVerification', 'status', 'testReport',
+        'user_id', 'measuring_device_id', 'verified_device_id'
     ];
 
     public function user(){
