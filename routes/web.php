@@ -22,6 +22,14 @@ Route::get('login', 'LoginController@showLoginForm');
 Route::post('login', 'LoginController@login');
 Route::get('logout', 'LoginController@logout');
 
+/*
+ | Password reset routes.
+ */
+Route::get('password/reset', 'ForgotPasswordController@showLinkRequestForm');
+Route::post('password/email', 'ForgotPasswordController@sendResetLinkEmail');
+Route::get('password/reset/{token}', 'ResetPasswordController@showREsetForm');
+Route::post('password/reset', 'ResetPasswordController@reset');
+
 Route::get('/register', 'RegistrationController@showRegisterForm');
 Route::post('/register', 'RegistrationController@store');
 
