@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/bootstrap-4.0.0-beta-dist/css/bootstrap.min.css">
     <link rel="stylesheet" href="/css/dashboard.css">
     <link rel="stylesheet" href="/open-iconic/font/css/open-iconic-bootstrap.css">
+    <link rel="stylesheet" href="/css/app.css">
 
     <style>
         th a {
@@ -25,18 +26,15 @@
 
 <body>
 
-@include('operator.partials.navbar')
-<div class="container-fluid">
-    <div class="col-sm9 ml-sm-auto col-md-10 pt-3">
-        @if(session()->has('message'))
-            <div class="alert alert-success alert-dismissible fade show" role="alert" id="flash-message">
-                <button type="button" data-dismiss="alert" class="close" aria-label="Close">
-                    <span aria-hidden="true">&times;</span>
-                </button>
-                {{session()->get('message')}}
-            </div>
-        @endif
+@if(session()->has('message'))
+    <div class="flash flash-success">
+        {{session()->get('message')}}
     </div>
+@endif
+
+@include('operator.partials.navbar')
+
+<div class="container-fluid">
     <div class="row">
         @include('operator.partials.sidebar')
 
@@ -69,6 +67,21 @@
     }
 
     e.addEventListener("input", addPlaceholder, false);
+</script>
+
+<script type="text/javascript">
+    function updateTransition() {
+        var el = document.querySelector(".flash");
+
+        if (el){
+            el.className = "flash flash-success flash-hide"
+            return el;
+        } else {
+            window.clearInterval(intervalID);
+        }
+    }
+
+    var intervalID = window.setInterval(updateTransition, 2000);
 </script>
 
 </body>

@@ -1,3 +1,9 @@
+* {
+    margin: 0;
+    outline: none;
+    font-size: 1em;
+}
+
 #registerHeader {
   font-size: 1.777em;
   line-height: 1.2em;
@@ -10,7 +16,7 @@
 }
 
  #main {
-   margin-top: 70px;
+   padding-top: 70px;
  }
 
 #loginHeader {
@@ -24,3 +30,32 @@
   text-align: left;
 }
 
+.flash {
+  box-sizing: border-box;
+  z-index: 1040;
+  position: absolute;
+  width: 100%;
+  top: 0;
+  padding: 16px 30px;
+  text-align: center;
+  cursor: pointer;
+  color: #fff;
+  -webkit-transition: top 1s linear;
+  transition: top 1s linear;
+}
+
+.flash-hide {
+    top: -56px;
+}
+
+.flash-danger {
+  background: rgba(189,54,47,0.95);
+}
+
+.flash-success {
+    background: rgba(81,163,81,0.95);
+}
+
+#error {
+  display: block;
+}
