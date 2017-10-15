@@ -8,7 +8,7 @@ class OperatorsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('operator');
+        $this->middleware(['auth', 'operator']);
     }
 
     public function index() {
@@ -19,9 +19,9 @@ class OperatorsController extends Controller
 
     public function store() {
         $this->validate(request(),[
-            'name' => 'required|max:255',
-            'email' => 'required|email',
-            'password' => 'required'
+            'name' => 'required|string|max:191',
+            'email' => 'required|string|email|max:191|unique:users',
+            'password' => 'required|string|min:6'
         ]);
 
         User::create([
@@ -31,13 +31,10 @@ class OperatorsController extends Controller
             'operator' => 1
         ]);
 
-        session()->flash('message', 'You have successfully added a new operator.');
-
-        return redirect('operator/operators');
+        return redirect('operator/operators')->with('message', 'You have successfully added new operator.');
     }
 
     public function show(User $operator) {
-        //dd($operator->toArray());
         if ($operator->operator) {
             return view('operator.operators.show', compact('operator'));
         }

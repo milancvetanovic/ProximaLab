@@ -4,8 +4,7 @@
 <head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <meta name="description" content="">
-    <meta name="author" content="">
+    <meta name="csrf-token" content="{{csrf_token()}}">
     <link rel="shortcut icon" href="//proxima-medical.rs/wp-content/uploads/2016/12/StarIco-1.png" type="image/x-icon">
 
     <title>ProximaLab</title>
@@ -15,12 +14,6 @@
     <link rel="stylesheet" href="/css/dashboard.css">
     <link rel="stylesheet" href="/open-iconic/font/css/open-iconic-bootstrap.css">
     <link rel="stylesheet" href="/css/app.css">
-
-    <style>
-        th a {
-            display: block;
-        }
-    </style>
 
 </head>
 
@@ -42,6 +35,8 @@
     </div>
 </div>
 
+@include('partials.footer')
+
 <!-- Bootstrap core JavaScript
 ================================================== -->
 <!-- Placed at the end of the document so the pages load faster -->
@@ -50,12 +45,8 @@
 <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.11.0/umd/popper.min.js" integrity="sha384-b/U6ypiBEHpOf/4+1nzFpr53nxSS+GLCkfwBdFNTxtclqqenISfwAzpKaMNFNmj4" crossorigin="anonymous"></script>
 
 <script src="/bootstrap-4.0.0-beta-dist/js/bootstrap.min.js" type="text/javascript"></script>
-
-<script>
-    $(document).ready(function () {
-        $('#flash-message').fadeOut(7000);
-    });
-</script>
+<script src="/js/app.js" type="text/javascript"></script>
+<script src="/js/flashMessage.js" type="text/javascript"></script>
 
 <script type="text/javascript">
     var e = document.getElementById("client");
@@ -66,22 +57,9 @@
         target.removeAttribute("disabled");
     }
 
-    e.addEventListener("input", addPlaceholder, false);
-</script>
-
-<script type="text/javascript">
-    function updateTransition() {
-        var el = document.querySelector(".flash");
-
-        if (el){
-            el.className = "flash flash-success flash-hide"
-            return el;
-        } else {
-            window.clearInterval(intervalID);
-        }
+    if (document.getElementById("client")){
+        e.addEventListener("input", addPlaceholder, false);
     }
-
-    var intervalID = window.setInterval(updateTransition, 2000);
 </script>
 
 </body>

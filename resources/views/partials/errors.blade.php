@@ -1,11 +1,10 @@
-<style>
-
-</style>
 
 @if(count($errors))
-    @foreach($errors->all() as $error)
         <div class="flash flash-danger" id="error">
-            {{ $error }}
+            @foreach($errors->all() as $error)
+                {{ $error }}
+                <br>
+            @endforeach
         </div>
-    @endforeach
+
 @endif

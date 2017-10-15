@@ -42,6 +42,16 @@
                         <input type="password" class="form-control" name="password" placeholder="Password">
                     </div>
                 </div>
+                
+                <div class="form-group">
+                    <div class="col-md-8">
+                        <div class="checkbox">
+                            <label>
+                                <input type="checkbox" name="remember" {{ old('remember') ? 'checked' : '' }}> Remember Me
+                            </label>
+                        </div>
+                    </div>
+                </div>
 
                 <div class="form-group">
                     <div class="col-md-8">

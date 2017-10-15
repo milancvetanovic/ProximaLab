@@ -15,8 +15,8 @@ class CheckIfOperator
      */
     public function handle($request, Closure $next)
     {
-        if (!auth()->check() or auth()->user()->operator == 0) {
-            return redirect('login');
+        if (!auth()->user()->operator) {
+            return redirect('/verifications')->withErrors('You do not have permission to access this page.');
         }
         return $next($request);
     }

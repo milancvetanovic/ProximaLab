@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+use Illuminate\Foundation\Auth\User;
 
 class LoginController extends Controller
 {
@@ -28,25 +28,29 @@ class LoginController extends Controller
      *
      * @return $this|\Illuminate\Http\RedirectResponse|\Illuminate\Routing\Redirector
      */
-    public function login(){
-        $this->validate(request(),[
-            'email' => 'required|email',
-            'password' => 'required'
-        ]);
+    public function login() {
+        $this->validateCredentials(); // Validate email address and password.
 
-        if (!auth()->attempt($this->getCredentials())){
+        /*
+         * Check the user with that email address exists.
+         */
+        if ($this->getUser()->isEmpty()) {
             return back()->withErrors([
-                'message' => 'Please check your credentials and try again.'
+                'message' => 'We cant find a user with that email address.'
             ]);
         }
 
-        session()->flash('message', 'Welcome back!');
-
-        if (auth()->user()->operator){
-            return redirect('/operator/verifications');
+        if (!$this->attemptLogin()){               // Try to login user
+            return back()->withErrors([            // Return error if failed.
+                'message' => 'Password are wrong.'
+            ]);
         }
 
-        return redirect('/verifications');
+        if (auth()->user()->operator){                                                                // Check if operator
+            return redirect()->intended('/operator/verifications')->with('message', 'Welcome back!'); // Redirect to operator section
+        }
+
+        return redirect()->intended('/verifications')->with('message', 'Welcome back!'); // If is it client, redirect to client section.
 
     }
 
@@ -58,19 +62,52 @@ class LoginController extends Controller
     public function logout() {
         auth()->logout();
 
-        session()->flash('message', 'You are logged out. Now what?');
+        return redirect('/login')->with('message', 'You are logged out. Now what?');
+    }
 
-        return redirect('/login');
+    /**
+     * Validate login credentials.
+     */
+    protected function validateCredentials(){
+        $this->validate(request(),[
+            'email' => 'required|email',
+            'password' => 'required'
+        ]);
     }
 
     /**
      * Get the login credentials and requirements
      * @return array
      */
-    protected function getCredentials() {
-        return [
-            'email' => request('email'),
-            'password' => request('password')
-        ];
+    protected function credentials() {
+        return request()->only('email', 'password');
+    }
+
+    /**
+     * Retrieve the user with provided email address.
+     *
+     * @return mixed
+     */
+    protected function getUser() {
+
+        return User::where('email', request('email'))->get();
+    }
+
+    /**
+     * Attempt to log the user into the application.
+     *
+     * @return bool
+     */
+    protected function attemptLogin() {
+        return $this->guard()->attempt($this->credentials(), request()->filled('remember'));
+    }
+
+    /**
+     * Get the guard to be used during authentication.
+     *
+     * @return \Illuminate\Contracts\Auth\Guard|\Illuminate\Contracts\Auth\StatefulGuard|mixed
+     */
+    protected function guard() {
+        return auth()->guard();
     }
 }

@@ -10,14 +10,21 @@
 
 </head>
 <body>
+
+@include('partials.errors')
+
+@if(session()->has('status'))
+    <div class="flash flash-success">
+        {{session()->get('status')}}
+    </div>
+@endif
+
 <div class="container" id="main">
     <div class="row">
         <div class="col-md-3"></div>
         <div class="col-md-8">
             <div class="col-md-8">
-                @if(session()->has('message'))
-                    <div class="alert alert-success">{{session()->get('message')}}</div>
-                @endif
+
                 <img src="/images/proximaLogo.png" alt="logo" width="360">
                 <h1 id="registerHeader">Reset Password</h1>
             </div>
@@ -26,16 +33,14 @@
                 {{csrf_field()}}
 
                 <div class="form-group">
-                    <label for="email" class="col-md-8">Email</label>
+                    <label for="email" class="col-md-8 form-control-label">Email</label>
                     <div class="col-md-6">
                         <input type="email" class="form-control" name="email" placeholder="e.g., {{Faker\Factory::create()->email}}">
                     </div>
                 </div>
 
-                @include('partials.errors')
-
                 <div class="col-md-8">
-                    <button type="submit" class="btn btn-success" style="cursor: pointer">
+                    <button type="submit" class="btn btn-success">
                         Send Password Reset Link
                     </button>
                 </div>

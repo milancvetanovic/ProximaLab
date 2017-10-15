@@ -30,9 +30,6 @@ Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail'
 Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showREsetForm')->name('password.reset');
 Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
-Route::get('/register', 'RegistrationController@showRegisterForm')->name('register');
-Route::post('/register', 'RegistrationController@store');
-
 Route::get('/verifications', 'VerificationsController@showVerifications');
 
 Route::get('/operator/verifications', 'VerificationsController@index');

@@ -9,7 +9,7 @@ class ClientsController extends Controller
 {
     public function __construct()
     {
-        $this->middleware('operator');
+        $this->middleware(['auth', 'operator']);
     }
 
     public function index() {
