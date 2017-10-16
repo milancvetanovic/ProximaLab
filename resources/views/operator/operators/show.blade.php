@@ -17,7 +17,7 @@
                     </button>
                     </form>
                 </div>
-                <div class="col-sm-2 ml-auto">
+                <div class="col-sm-2 mr-auto">
                     <form action="/operator/operators/{{ $operator->id }}" method="post">
                         <input type="hidden" name="_method" value="delete">
                         {{ csrf_field() }}

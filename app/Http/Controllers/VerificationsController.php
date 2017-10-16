@@ -15,7 +15,7 @@ class VerificationsController extends Controller
     public function __construct()
     {
         $this->middleware('auth')->only('showVerifications');
-        $this->middleware('operator')->only('index', 'create');
+        $this->middleware(['auth', 'operator'])->only('index', 'create');
     }
 
     public function index(){

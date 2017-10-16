@@ -20,10 +20,10 @@
                 <?php $i = 1; ?>
                 @foreach($operators as $operator)
                     <tr>
-                        <td><a href="/operator/operators/{{ $operator->id }}">{{ $i }}</a></td>
+                        <td>{{ $i }}</td>
                         <td><a href="/operator/operators/{{ $operator->id }}">{{ $operator->name }}</a></td>
-                        <td><a href="/operator/operators/{{ $operator->id }}">{{ $operator->email }}</a></td>
-                        <td><a href="/operator/operators/{{ $operator->id }}">{{ $operator->verifications->count() }}</a></td>
+                        <td>{{ $operator->email }}</td>
+                        <td>{{ $operator->verifications->count() }}</td>
                     </tr>
                     <?php $i = $i + 1; ?>
                 @endforeach
