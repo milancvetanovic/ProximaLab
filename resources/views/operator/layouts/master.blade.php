@@ -28,9 +28,7 @@
 @include('operator.partials.navbar')
 
 <div class="container-fluid">
-    <div class="row">
-        @include('operator.partials.sidebar')
-
+    <div class="row justify-content-md-center">
         @yield('content')
     </div>
 </div>

@@ -3,7 +3,7 @@
 
 @section('content')
 
-    <main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
+    <main class="col-sm-9 col-md-9 pt-3" role="main">
 
         <h1>Dashboard</h1>
 

@@ -2,8 +2,10 @@
 
 @section('content')
 
-    <main class="col-sm-9 ml-sm-auto col-md-10 pt-3" role="main">
+    <main class="col-sm-9 col-md-9 pt-3" role="main">
         <h1>Dashboard</h1>
+
+        @include('operator.partials.labelSection')
 
         <h2>Operators</h2>
         <div class="table-responsive">
